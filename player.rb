@@ -18,4 +18,27 @@ class Player
   public
 
   attr_reader :marker
+
+  def name
+    "player #{turn}"
+  end
+
+  def make_choice # rubocop:disable Metrics/MethodLength
+    row_choice = nil
+    col_choice = nil
+
+    loop do
+      print "#{name} choose row: "
+      row_choice = gets.chomp.to_i
+      break if (1..3).include?(row_choice)
+    end
+
+    loop do
+      print "#{name} choose column: "
+      col_choice = gets.chomp.to_i
+      break if (1..3).include?(col_choice)
+    end
+
+    [row_choice, col_choice]
+  end
 end
